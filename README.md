@@ -18,3 +18,11 @@ npm run dev
 ```
 node dist/client.js
 ```
+
+## References:
+
+- For websocket example and ws library usage:
+
+```
+https://github.com/websockets/ws
+```
