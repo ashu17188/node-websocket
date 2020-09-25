@@ -1,21 +1,21 @@
 #!/usr/bin/env node
-var WebSocketClient = require('websocket').client;
+import * as websocket from 'websocket';
+
+let client = new websocket.client();
  
-var client = new WebSocketClient();
- 
-client.on('connectFailed', function(error) {
+client.on('connectFailed', (error) => {
     console.log('Connect Error: ' + error.toString());
 });
  
-client.on('connect', function(connection) {
+client.on('connect', (connection)=> {
     console.log('WebSocket Client Connected');
-    connection.on('error', function(error) {
+    connection.on('error', (error) =>{
         console.log("Connection Error: " + error.toString());
     });
-    connection.on('close', function() {
+    connection.on('close', () => {
         console.log('echo-protocol Connection Closed');
     });
-    connection.on('message', function(message) {
+    connection.on('message', (message) => {
         if (message.type === 'utf8') {
             console.log("Received: '" + message.utf8Data + "'");
         }
